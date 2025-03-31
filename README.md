@@ -1,5 +1,41 @@
 # ov_pipeline_benchmark
 
+## Env Setup
+
+### Install the Dependency
+
+```
+conda create -n ovplb python=3.11
+conda activate ovplb
+pip install anomalib
+anomalib install --option full
+```
+
+### Prepare the dataset
+
+```
+datasets
+└── MVTecAD
+    ├── bottle
+    ├── cable
+    ├── capsule
+    ├── carpet
+    ├── grid
+    ├── hazelnut
+    ├── leather
+    ├── license.txt
+    ├── metal_nut
+    ├── pill
+    ├── readme.txt
+    ├── screw
+    ├── tile
+    ├── toothbrush
+    ├── transistor
+    ├── wood
+    └── zipper
+```
+
+
 ## Test for the anomalib-patchcore-resnet18 model with mvtecad-bottle
 
 ### Test with CPU

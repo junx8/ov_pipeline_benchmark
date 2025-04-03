@@ -35,6 +35,63 @@ datasets
     └── zipper
 ```
 
+<details>
+<summary><b>Export OpenVINO IR (Optional)</b></summary>
+### Prepare the Model(Optional)
+
+```
+python export_ir.py -et -cn [your_category]
+```
+
+```
+ovmodels/
+├── patchcore_resnet18_bottle
+│   ├── model.bin
+│   └── model.xml
+├── patchcore_resnet18_cable
+│   ├── model.bin
+│   └── model.xml
+├── patchcore_resnet18_capsule
+│   ├── model.bin
+│   └── model.xml
+├── patchcore_resnet18_carpet
+│   ├── model.bin
+│   └── model.xml
+├── patchcore_resnet18_grid
+│   ├── model.bin
+│   └── model.xml
+├── patchcore_resnet18_hazelnut
+│   ├── model.bin
+│   └── model.xml
+├── patchcore_resnet18_leather
+│   ├── model.bin
+│   └── model.xml
+├── patchcore_resnet18_metal_nut
+│   ├── model.bin
+│   └── model.xml
+├── patchcore_resnet18_pill
+│   ├── model.bin
+│   └── model.xml
+├── patchcore_resnet18_screw
+│   ├── model.bin
+│   └── model.xml
+├── patchcore_resnet18_tile
+│   ├── model.bin
+│   └── model.xml
+├── patchcore_resnet18_toothbrush
+│   ├── model.bin
+│   └── model.xml
+├── patchcore_resnet18_transistor
+│   ├── model.bin
+│   └── model.xml
+├── patchcore_resnet18_wood
+│   ├── model.bin
+│   └── model.xml
+└── patchcore_resnet18_zipper
+    ├── model.bin
+    └── model.xml
+```
+</details>
 
 ## Test for the anomalib-patchcore-resnet18 model with mvtecad-bottle
 
@@ -43,6 +100,13 @@ datasets
 ```
 python throughput_benchmark.py
 ``` 
+or
+
+
+
+```
+python throughput_benchmark.py -cn bottle cable capsule carpet grid hazelnut leather metal_nut pill screw tile toothbrush transistor wood zipper
+```
 
 ```
 INFO:root:OpenVINO:

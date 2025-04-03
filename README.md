@@ -37,6 +37,7 @@ datasets
 
 <details>
 <summary><b>Export OpenVINO IR (Optional)</b></summary>
+    
 ### Prepare the Model(Optional)
 
 ```

@@ -17,6 +17,7 @@ from anomalib.data.datasets import MVTecADDataset
 import torchvision.transforms as transforms
 import time
 import argparse
+from pathlib import Path
 
 mvtec_categorys = ['bottle', 'cable', 'capsule', 'carpet', 'grid', 'hazelnut', 'leather', 'metal_nut', 'pill', 'screw', 'tile',  'toothbrush',  'transistor',  'wood', 'zipper']
 
@@ -47,9 +48,9 @@ def save_results_callback(infer_request: ov.InferRequest, data) -> None:
             "anomaly_map": {"colormap": True, "normalize": True}
         }
     )
-    base_img_path = "_".join(data.image_path.split('/')[-4:])
-    amap_path = "res/anomaly_map/"+ base_img_path
-    overlay_path = "res/overlay/" + base_img_path
+    base_img_path = Path("_".join(data.image_path.split('/')[-4:]))
+    amap_path = "res/anomaly_map/"+ base_img_path.name
+    overlay_path = "res/overlay/" + base_img_path.name
     result_map.save(amap_path)
     result_overlay = visualize_image_item(
         data,
@@ -128,9 +129,10 @@ def main():
         dtime = time.time() - stime
         print(f'\nSaving Results Performance for {class_name}:\n - {len(dataset)} images task {dtime:.2f} sec, {dtime/len(dataset):.3f} sec/image')
         print(f' - throughput {len(dataset)/dtime:.2f} FPS')
-    print(f'\nAverage Performan for mvtec:\n')
-    print(f' - Average Latency: {sum(total_latency)/len(total_latency):.3f}')
-    print(f' - Average Throughput: {sum(total_tput)/len(total_tput):.2f}')
+    print("\n\n--------------------------------")
+    print(f'\nAverage Performance for mvtec:\n')
+    print(f' - Average Latency: {sum(total_latency)/len(total_latency):.3f} sec')
+    print(f' - Average Throughput: {sum(total_tput)/len(total_tput):.2f} FPS\n')
 
 
 if __name__ == '__main__':

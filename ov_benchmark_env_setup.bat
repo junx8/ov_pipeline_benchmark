@@ -37,27 +37,19 @@ echo ### Or you can create the directory [datasets/MVTecAD] and put the mvtec da
 echo.
 
 echo If this is the first time you are running it, please download the MVTecAD datasets for AI Benchmark.
-set /p choice="Do you want download the MVTecAD datasets? (y/n)"
+choice /C YN /M "Do you want download the MVTecAD datasets?"
 
-:dlcheck_choice
-if /i "%choice%"=="y" (
-    echo.
-    echo.
-    echo Starting download the MVTecAD datasets for AI Benchmark...
-    python prepare_dataset.py
-    goto dlend
-) else if /i "%choice%"=="n" (
+if errorlevel 2 (
     echo.
     echo.
     echo Select not download the MVTecAD datasets for AI Benchmark...
     echo Please make sure put the MVTecAD datasets into the AI Benchmark directory. 
-    goto dlend
-) else (
-    echo invalid Input! Please enter 'y' or 'n'.
-    set /p choice=
-    goto dlcheck_choice
+) else if errorlevel 1 (
+    echo.
+    echo.
+    echo Starting download the MVTecAD datasets for AI Benchmark...
+    python prepare_dataset.py
 )
-:dlend
 
 
 echo.

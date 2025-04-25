@@ -13,6 +13,13 @@ anomalib install --option full
 
 ### Prepare the dataset
 
+- Use the script or do it manually
+
+```
+python prepare_dataset.py
+```
+
+
 ```
 datasets
 └── MVTecAD
@@ -43,6 +50,8 @@ datasets
 ```
 python export_ir.py -et -cn [your_category]
 ```
+
+> It will download the weights from huggingface, please make sure you can access it.
 
 ```
 ovmodels/

@@ -4,7 +4,7 @@ if %errorlevel% equ 0 (
     echo Python already installed.
 ) else (
     echo Please install Python.
-    exit /b
+    exit /b 10
 )
 
 @echo off
@@ -14,7 +14,7 @@ if %errorlevel% equ 0 (
 ) else (
     echo Please install Python==3.12
     @REM python 3.13 is not support fine for onnx 
-    exit /b
+    exit /b 10
 )
 
 echo.

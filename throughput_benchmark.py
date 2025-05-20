@@ -24,6 +24,7 @@ mvtec_categorys = ['bottle', 'cable', 'capsule', 'carpet', 'grid', 'hazelnut', '
 def arg_parser():
     parser = argparse.ArgumentParser(description='Performance test for model inference pipeline', formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument('-m', '--model', type=str, default="ovmodels/patchcore_resnet18_bottle/model.xml", help='the OpenVINO IR *.xml')
+    parser.add_argument('-t', '--runtime', type=int, default='0', help=f'Run Time(hours) for stress test')
     parser.add_argument('-d', '--device', default='CPU', help=f'The device to do inference')
     parser.add_argument('-cn', '--class_name', nargs='+', default=['bottle'], help=f'The class name of mvtec, default is [bottle]\n {mvtec_categorys}\n(default: %(default)s)')
 
@@ -98,6 +99,30 @@ def main():
         infer_queue = ov.AsyncInferQueue(compiled_model)
         infer_queue.set_callback(completion_callback)
         resize_transform = transforms.Resize((256, 256))
+
+        if args.runtime > 0:
+            formatted_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            print(f"\nStarting Stress Testing({formatted_time})...", end="")
+
+            stime = time.time()
+            dtime = 0
+            runtime = int(args.runtime)*3600
+            while dtime < runtime:
+                for data in dataset:
+                    resize_img = resize_transform(data.image)
+                    nimg = np.expand_dims(resize_img, axis=0)
+                    input_tensor = ov.Tensor(array=nimg, shared_memory=True)
+                    infer_queue.start_async({0: input_tensor}, data)
+                infer_queue.wait_all()
+
+                dtime = time.time() - stime
+                print('.', end="")
+                sys.stdout.flush()
+
+            formatted_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            print(f'\nStoping Stress Testing({formatted_time})')
+            return 0
+
 
         print("\nStarting Performance Testing...")
         stime = time.time()

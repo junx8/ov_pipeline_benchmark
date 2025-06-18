@@ -30,6 +30,7 @@ echo Installing required packages...
 @REM python -m pip install --upgrade pip
 pip install anomalib
 anomalib install --option full -v
+pip install screeninfo
 
 echo.
 echo.

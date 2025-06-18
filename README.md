@@ -156,3 +156,13 @@ Saving Results Performance:
 
 
 ## Run Demo
+
+```
+python demo.py
+```
+
+```
+python demo.py -d GPU
+```
+
+> The `ovmodels/` only provides the OpenVINO IR for bottle. IRs of other categories can be downloaded [here]().

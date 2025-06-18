@@ -32,27 +32,6 @@ pip install anomalib
 anomalib install --option full -v
 
 echo.
-echo Prepare the MVTecAD datasets...
-echo ### Or you can create the directory [datasets/MVTecAD] and put the mvtec data into it manually.
-echo.
-
-echo If this is the first time you are running it, please download the MVTecAD datasets for AI Benchmark.
-choice /C YN /M "Do you want download the MVTecAD datasets?"
-
-if errorlevel 2 (
-    echo.
-    echo.
-    echo Select not download the MVTecAD datasets for AI Benchmark...
-    echo Please make sure put the MVTecAD datasets into the AI Benchmark directory. 
-) else if errorlevel 1 (
-    echo.
-    echo.
-    echo Starting download the MVTecAD datasets for AI Benchmark...
-    python prepare_dataset.py
-)
-
-
-echo.
 echo.
 echo Done!
 echo Exit of the virtual environment...

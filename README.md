@@ -13,12 +13,7 @@ anomalib install --option full
 
 ### Prepare the dataset
 
-- Use the script or do it manually
-
-```
-python prepare_dataset.py
-```
-
+- Download the dataset from [MVTecAD](https://www.mvtec.com/company/research/datasets) and put the data as follows:
 
 ```
 datasets
@@ -103,9 +98,9 @@ ovmodels/
 ```
 </details>
 
-## Test for the anomalib-patchcore-resnet18 model with mvtecad-bottle
+## Run Benchmark
 
-### Test with CPU
+### Run Benchmark on CPU
 
 ```
 python throughput_benchmark.py
@@ -136,7 +131,7 @@ Saving Results Performance:
 ```
 
 
-### Test with GPU
+### Run Benchmark on GPU
 
 ```
 python throughput_benchmark.py -d GPU
@@ -158,3 +153,6 @@ Saving Results Performance:
  - 83 images task 5.00 sec, 0.060 sec/image
  - throughput 16.59 FPS
 ```
+
+
+## Run Demo

@@ -165,4 +165,4 @@ python demo.py
 python demo.py -d GPU
 ```
 
-> The `ovmodels/` only provides the OpenVINO IR for bottle. IRs of other categories can be downloaded [here]().
+> The `ovmodels/` only provides the OpenVINO IR for bottle. IRs of other categories can be downloaded [here](https://github.com/junx8/ov_pipeline_benchmark/releases/download/v1.4/ovmodels.tar.gz).

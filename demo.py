@@ -164,7 +164,7 @@ def main():
 
     model_path = f'ovmodels/patchcore_resnet18_{class_name}/model.xml'
     if not os.path.exists(model_path):
-        raise ValueError(f"Model file does not exist at {model_path}, Please export the OpenVINO IR for {class_name}")
+        raise ValueError(f"Model file does not exist at {model_path}, Please export the OpenVINO IR for {class_name}, or download from https://github.com/junx8/ov_pipeline_benchmark/releases/download/v1.4/ovmodels.tar.gz")
     core = ov.Core()
     inmodel = core.read_model(model_path)
     inmodel.reshape([1,3,256,256])
